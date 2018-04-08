@@ -6,6 +6,7 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 import time
 
+# We get this token from https://apps.twitter.com/ 
 access_token="2564921978-ulEYwcTKFfPhRFJdDFkL4jQpTWKdFPViGFKxnoK"
 access_token_secret="nYxnIYiBddLUYjKJ9zrUhpVwOFFEdQwbWiAfOS5t5I3hE"
 consumer_key="MW9NovQYcXVPVzM6FWaKRv7H7"
@@ -25,8 +26,8 @@ class StdoutListener(StreamListener):
 	def on_error(self,data):
 			print(status)
 
-l = StdoutListener()
+obj = StdoutListener()
 auth = OAuthHandler(consumer_key,consumer_secret)
 auth.set_access_token(access_token,access_token_secret)
-stream=Stream(auth,l)
+stream=Stream(auth,obj)
 stream.filter(track=['us'])
